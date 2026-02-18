@@ -44,11 +44,13 @@ if %DONGLE_BACKUP% GTR 0 (
 echo choose target device (donor selection)
 echo 1: SD2PSX
 echo 2: MemcardPro2
-echo 3: custom
-CHOICE /C 123
+echo 3: Unbind (removes dongle signature from boot.bin, leaving it ready to bind again)
+echo 4: custom
+CHOICE /C 1234
 if errorlevel 1 set DONOR=SD2PSX
 if errorlevel 2 set DONOR=MCPRO2
-if errorlevel 3 set DONOR=CUSTOM
+if errorlevel 3 set DONOR=BLANK
+if errorlevel 4 set DONOR=CUSTOM
 
 if not exist "donor\%DONOR%.DONOR" (
     echo ERROR: Donor file "donor\%DONOR%.DONOR" missing
